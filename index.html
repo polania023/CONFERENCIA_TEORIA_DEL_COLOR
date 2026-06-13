@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferencia: Historia del Círculo Cromático</title>
+    <style>
+    
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #2563eb;
+            --border-color: rgba(226, 232, 240, 0.8);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+      
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            border-radius: var(--radius);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            font-weight: 850;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent; /* Permite ver el degradado de fondo */
+        }
+
+        header p {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            max-width: 650px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+   
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+    
+        .card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+            border-color: rgba(37, 99, 235, 0.25);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 230px;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+
+        .card-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: var(--transition);
+            filter: brightness(0.95) contrast(1.02);
+        }
+
+        .card:hover .card-img-container img {
+            transform: scale(1.03);
+            filter: brightness(1.02) contrast(1.05);
+        }
+
+        .card-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: #eff6ff;
+            color: var(--accent);
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            align-self: flex-start;
+            border: 1px solid #dbeafe;
+            transition: var(--transition);
+        }
+
+        .card:hover .badge {
+            background-color: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Memorias de la Conferencia</h1>
+            <p>Dios, Color, Arte, Vida: La Historia del Círculo Cromático y la Teoría del Color</p>
+        </header>
+
+        <div class="grid">
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img1.jpeg" alt="Johann Wolfgang von Goethe">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">1. Johann Wolfgang von Goethe</h2>
+                    <p class="card-text">Aproximación didáctica y humorística sobre el pensador alemán. Introduce las bases de su "Teoría de los Colores" (1810), donde rebatió la perspectiva puramente matemática de Newton para centrarse en la experiencia humana, la subjetividad y los aspectos psicológicos de la percepción visual.</p>
+                    <span class="badge">Goethe</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img2.jpeg" alt="Isaac Newton y la Disrupción">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">2. Ciencia y Disrupción</h2>
+                    <p class="card-text">Paralelo histórico entre la naturaleza rupturista de Sir Isaac Newton en el siglo XVII y las mentes tecnológicas contemporáneas. Se destaca cómo la publicación de su tratado "Opticks" marcó un antes y un después en la comprensión de la luz como un fenómeno físico analizable.</p>
+                    <span class="badge">Newton &amp; Óptica</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img3.jpeg" alt="El lado humano de Newton">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">3. El Lado Humano del Genio</h2>
+                    <p class="card-text">Revisión biográfica que rompe el mito estricto del científico: su origen prematuro en Woolsthorpe, sus marcados problemas de tartamudez, el complejo temperamento resentido hacia sus padres y su curiosa apatía legislativa en su paso por el parlamento.</p>
+                    <span class="badge">Biografía</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img4.jpeg" alt="Armonías de color modernas">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">4. Modelos Matemáticos y Armonías</h2>
+                    <p class="card-text">Análisis de los esquemas estructurales modernos inspirados en las geometrías de la luz. Explicación técnica de la relación espacial entre colores complementarios directos, tríadas equidistantes, colores análogos colindantes y tétradas o dobles complementarios.</p>
+                    <span class="badge">Teoría del Color</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img5.jpeg" alt="Óptica y Fisiología">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">5. Percepción, Luz y Anatomía Ocular</h2>
+                    <p class="card-text">Estudio analítico que conecta la física ondulatoria con la biología. Muestra el experimento clásico del prisma refractando la luz blanca en el espectro visible, vinculándolo directamente con el funcionamiento de las células fotorreceptoras de la retina: los conos y los bastones.</p>
+                    <span class="badge">Biología y Física</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img6.jpeg" alt="Evolución Artística">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">6. El Vínculo entre la Ciencia y la Pintura</h2>
+                    <p class="card-text">La rueda cromática dispuesta como eje evolutivo en la historia del arte. Muestra cómo la rigidez compositiva y las reglas del color clásico del Alto Renacimiento sirvieron como cimiento técnico para las posteriores rupturas estéticas y geométricas de las vanguardias del cubismo.</p>
+                    <span class="badge">Historia del Arte</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img7.jpeg" alt="¿Por qué importa el color?">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">7. Objetivar la Subjetividad</h2>
+                    <p class="card-text">Justificación de la colorimetría en el entorno comercial moderno. Se debate la complejidad de transformar las sensaciones abstractas en códigos estandarizados para garantizar la consistencia en el diseño textil de modas, la industria del empaque gráfico y la identidad corporativa.</p>
+                    <span class="badge">Aplicación Práctica</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img8.jpeg" alt="Maestros del Renacimiento">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">8. La Luz y la Sombra en el Renacimiento</h2>
+                    <p class="card-text">Revisión de las atmósferas y volúmenes logrados por los grandes maestros italianos. Se destaca el uso del claroscuro y la iluminación mística aplicados de forma magistral en los rostros y ropajes de las obras icónicas de Leonardo da Vinci y Sandro Botticelli.</p>
+                    <span class="badge">Renacimiento</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img9.jpeg" alt="El valor del pigmento azul ultramar">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">9. Economía del Color y el Azul Ultramar</h2>
+                    <p class="card-text">Explicación del estatus y misticismo del azul ultramar auténtico, molido a partir de piedras semipreciosas de Lapislázuli importadas de Afganistán. Su costo histórico, superior al del oro, restringía su uso exclusivo a mantos sagrados y lienzos selectos de genios como Johannes Vermeer.</p>
+                    <span class="badge">Pigmentos</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img10.jpeg" alt="Arte Rupestre e Inicios">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">10. Los Albores Prehistóricos</h2>
+                    <p class="card-text">Regreso a las raíces de la expresión humana a través de la pintura rupestre. Se analiza el uso de óxidos de hierro, arcillas, grasas animales y carbón vegetal empleados en las cuevas paleolíticas para plasmar escenas de caza con los primeros pigmentos estables.</p>
+                    <span class="badge">Prehistoria</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img11.jpeg" alt="Paletas de color y Contexto Histórico">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">11. Paletas de Color y Contexto</h2>
+                    <p class="card-text">Estudio cronológico sobre la indumentaria de época y las paletas cromáticas asociadas a hitos específicos de la moda. Explora cómo el desarrollo técnico textil influyó en la selección de tonos iconográficos para definir jerarquías y estéticas sociales.</p>
+                    <span class="badge">Moda e Historia</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img12.jpeg" alt="El Universo del Color e Introspección">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">12. El Universo del Color</h2>
+                    <p class="card-text">Espacio de conceptualización y debate estético bajo la célebre cita reflexiva del pintor Paul Klee: <em>"El color es el lugar donde nuestro cerebro y el universo se encuentran"</em>. Se analiza la estrecha línea divisoria entre el estímulo físico externo y la interpretación mental abstracta.</p>
+                    <span class="badge">Teoría Estética</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img13.jpeg" alt="Sistemas de Catalogación y Pantone">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">13. Sistemas de Catalogación</h2>
+                    <p class="card-text">Uso industrial y estandarización del color por medio de guías normalizadas de alta fidelidad (Pantone). Se describe el proceso técnico y la importancia de unificar criterios numéricos para vincular de manera precisa la memoria visual, la producción y las sensaciones.</p>
+                    <span class="badge">Colorimetría</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="img14.jpeg" alt="Sara Viloria - Ponente">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">14. Ponente: Sara Viloria</h2>
+                    <p class="card-text">Cierre y sección de conclusiones de la jornada académica a cargo de la Licenciada en Artes Visuales y Colorista Certificada, quien recopila las enseñanzas clave para tender puentes entre la historia cromática clásica y el diseño contemporáneo.</p>
+                    <span class="badge">Conclusión</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 &mdash; Galería Fotográfica de la Conferencia sobre Teoría del Color de JUAN SEBASTIAN POLANIA REYES</p>
+    </footer>
+
+</body>
+</html>
